@@ -8,7 +8,7 @@ A mod that replaces unrated levels' ratings with their requested ones.
 
 # Credits
 - [HexCodes](https://gdbrowser.com/u/16858187) - Idea for the mod
-- [hiimjustin000](https://gdbrowser.com/u/7466002) - Creator of the mod
+- [hiimjasmine00](https://gdbrowser.com/u/7466002) - Creator of the mod
 
 # License
 This mod is licensed under the [MIT License](./LICENSE).

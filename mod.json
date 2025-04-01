@@ -1,29 +1,24 @@
 {
-    "geode": "4.0.0-beta.1",
+    "geode": "4.3.1",
     "gd": {
         "android": "2.2074",
         "win": "2.2074",
         "mac": "2.2074"
     },
-    "version": "v1.1.3",
+    "version": "v1.1.4",
     "id": "hiimjustin000.requested_ratings",
     "name": "Requested Ratings",
-    "developer": "hiimjustin000",
+    "developer": "hiimjasmine00",
     "description": "A mod that replaces unrated levels' ratings with their requested ones.",
-    "dependencies": [
-        {
-            "id": "geode.node-ids",
-            "version": ">=v1.12.0",
-            "importance": "required"
+    "dependencies": {
+        "geode.node-ids": ">=v1.1.0"
+    },
+    "incompatibilities": {
+        "hiimjustin000.na_demon": {
+            "importance": "superseded",
+            "version": "*"
         }
-    ],
-    "incompatibilities": [
-        {
-            "id": "hiimjustin000.na_demon",
-            "version": "*",
-            "importance": "superseded"
-        }
-    ],
+    },
     "settings": {
         "enable-auto": {
             "name": "Enable Auto",
@@ -76,8 +71,8 @@
     },
     "links": {
         "community": "https://discord.gg/QVKmbvBXA7",
-        "source": "https://github.com/hiimjustin000/RequestedRatings",
-        "homepage": "https://www.hiimjustin000.com"
+        "source": "https://github.com/hiimjasmine00/RequestedRatings",
+        "homepage": "https://www.hiimjasmine00.com"
     },
     "tags": [
         "enhancement",

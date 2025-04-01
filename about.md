@@ -8,4 +8,4 @@ A mod that replaces unrated levels' ratings with their requested ones.
 
 # Credits
 - [HexCodes](user:16858187) - Idea for the mod
-- [hiimjustin000](user:7466002) - Creator of the mod
+- [hiimjasmine00](user:7466002) - Creator of the mod
