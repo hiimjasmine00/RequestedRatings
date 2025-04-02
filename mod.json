@@ -16,7 +16,7 @@
     "incompatibilities": {
         "hiimjustin000.na_demon": {
             "importance": "superseded",
-            "version": "*"
+            "version": ">=v1.0.0"
         }
     },
     "settings": {
