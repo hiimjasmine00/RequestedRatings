@@ -1,4 +1,7 @@
 # Requested Ratings Changelog
+## v1.1.5 (2025-04-06)
+- Added support for iOS
+
 ## v1.1.4 (2025-04-01)
 - Internal code changes (April Fools' Day)
 
