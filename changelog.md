@@ -1,4 +1,7 @@
 # Requested Ratings Changelog
+## v1.1.6 (2025-06-22)
+- Ported to Geode v4.6.1
+
 ## v1.1.5 (2025-04-06)
 - Added support for iOS
 

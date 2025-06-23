@@ -1,5 +1,5 @@
 # Requested Ratings
-A mod that replaces unrated levels' ratings with their requested ones.
+Level difficulties from requested stars.
 
 # Features
 - Difficulty faces corresponding to the requested rating displayed on the level, which remain untouched if the level doesn't request a rating

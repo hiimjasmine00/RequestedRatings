@@ -6,11 +6,11 @@
         "mac": "2.2074",
         "ios": "2.2074"
     },
-    "version": "v1.1.5",
+    "version": "v1.1.6",
     "id": "hiimjustin000.requested_ratings",
     "name": "Requested Ratings",
     "developer": "hiimjasmine00",
-    "description": "A mod that replaces unrated levels' ratings with their requested ones.",
+    "description": "Level difficulties from requested stars.",
     "dependencies": {
         "geode.node-ids": ">=v1.1.0"
     },
