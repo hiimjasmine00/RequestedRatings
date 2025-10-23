@@ -1,54 +1,52 @@
 #include "RequestedRatings.hpp"
 #include <Geode/binding/GJDifficultySprite.hpp>
 #include <Geode/binding/GJGameLevel.hpp>
+#include <Geode/loader/ModSettingsManager.hpp>
+#include <Geode/loader/SettingV3.hpp>
 
 using namespace geode::prelude;
 
-bool RequestedRatings::enabled(Mod* mod) {
-    return get<"enable-auto", bool>(mod) || get<"enable-easy", bool>(mod) || get<"enable-normal", bool>(mod) || get<"enable-hard", bool>(mod) ||
-        get<"enable-harder", bool>(mod) || get<"enable-insane", bool>(mod) || get<"enable-demon", bool>(mod) || get<"na-override", bool>(mod);
-}
+static std::unordered_map<std::string_view, BoolSettingV3*> settings = [] {
+    std::unordered_map<std::string_view, BoolSettingV3*> settings;
+    auto msm = ModSettingsManager::from(getMod());
+    constexpr std::array keys = {
+        "enable-auto",
+        "enable-easy",
+        "enable-normal",
+        "enable-hard",
+        "enable-harder",
+        "enable-insane",
+        "enable-demon",
+        "na-override",
+    };
+    for (auto key : keys) {
+        if (auto setting = std::static_pointer_cast<BoolSettingV3>(msm->get(key))) {
+            settings.emplace(key, setting.get());
+        }
+    }
+    return settings;
+}();
 
 void RequestedRatings::updateDifficultySprite(GJDifficultySprite* sprite, GJGameLevel* level) {
-    if (level->m_stars.value() == 0 && level->m_demon.value() == 0 && level->m_featured == 0 && level->m_isEpic == 0 && level->m_starsRequested > 0) {
-        auto difficulty = 0;
-        auto update = false;
-        auto mod = Mod::get();
-        switch (level->m_starsRequested) {
-            case 1: // Auto
-                difficulty = -1;
-                update = get<"enable-auto", bool>(mod);
-                break;
-            case 2: // Easy
-                difficulty = 1;
-                update = get<"enable-easy", bool>(mod);
-                break;
-            case 3: // Normal
-                difficulty = 2;
-                update = get<"enable-normal", bool>(mod);
-                break;
-            case 4: case 5: // Hard
-                difficulty = 3;
-                update = get<"enable-hard", bool>(mod);
-                break;
-            case 6: case 7: // Harder
-                difficulty = 4;
-                update = get<"enable-harder", bool>(mod);
-                break;
-            case 8: case 9: // Insane
-                difficulty = 5;
-                update = get<"enable-insane", bool>(mod);
-                break;
-            case 10: // Demon
-                difficulty = 6;
-                update = get<"enable-demon", bool>(mod);
-                break;
-            default: // NA
-                difficulty = 0;
-                update = get<"na-override", bool>(mod);
-                break;
-        }
+    auto starsRequested = level->m_starsRequested;
+    if (level->m_stars.value() == 0 && level->m_demon.value() == 0 && level->m_featured == 0 && level->m_isEpic == 0 && starsRequested > 0) {
+        constexpr std::array difficulties = {
+            std::make_pair(0, "na-override"),
+            std::make_pair(-1, "enable-auto"),
+            std::make_pair(1, "enable-easy"),
+            std::make_pair(2, "enable-normal"),
+            std::make_pair(3, "enable-hard"),
+            std::make_pair(3, "enable-hard"),
+            std::make_pair(4, "enable-harder"),
+            std::make_pair(4, "enable-harder"),
+            std::make_pair(5, "enable-insane"),
+            std::make_pair(5, "enable-insane"),
+            std::make_pair(6, "enable-demon")
+        };
 
-        if (update) sprite->updateDifficultyFrame(difficulty, GJDifficultyName::Short);
-    } 
+        auto [difficulty, key] = difficulties[starsRequested < difficulties.size() ? starsRequested : 0];
+        if (auto it = settings.find(key); it != settings.end() && it->second->getValue()) {
+            sprite->updateDifficultyFrame(difficulty, GJDifficultyName::Short);
+        }
+    }
 }

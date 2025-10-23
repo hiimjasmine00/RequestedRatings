@@ -1,5 +1,5 @@
 {
-    "geode": "4.6.1",
+    "geode": "4.9.0",
     "gd": {
         "android": "2.2074",
         "win": "2.2074",
@@ -21,6 +21,7 @@
         }
     },
     "settings": {
+        
         "enable-auto": {
             "name": "Enable Auto",
             "description": "Enables the auto difficulty for levels with a requested rating of 1 star.",
