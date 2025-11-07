@@ -1,31 +1,9 @@
 #include "RequestedRatings.hpp"
 #include <Geode/binding/GJDifficultySprite.hpp>
 #include <Geode/binding/GJGameLevel.hpp>
-#include <Geode/loader/ModSettingsManager.hpp>
-#include <Geode/loader/SettingV3.hpp>
+#include <jasmine/setting.hpp>
 
 using namespace geode::prelude;
-
-static std::unordered_map<std::string_view, BoolSettingV3*> settings = [] {
-    std::unordered_map<std::string_view, BoolSettingV3*> settings;
-    auto msm = ModSettingsManager::from(getMod());
-    constexpr std::array keys = {
-        "enable-auto",
-        "enable-easy",
-        "enable-normal",
-        "enable-hard",
-        "enable-harder",
-        "enable-insane",
-        "enable-demon",
-        "na-override",
-    };
-    for (auto key : keys) {
-        if (auto setting = std::static_pointer_cast<BoolSettingV3>(msm->get(key))) {
-            settings.emplace(key, setting.get());
-        }
-    }
-    return settings;
-}();
 
 void RequestedRatings::updateDifficultySprite(GJDifficultySprite* sprite, GJGameLevel* level) {
     auto starsRequested = level->m_starsRequested;
@@ -45,7 +23,7 @@ void RequestedRatings::updateDifficultySprite(GJDifficultySprite* sprite, GJGame
         };
 
         auto [difficulty, key] = difficulties[starsRequested < difficulties.size() ? starsRequested : 0];
-        if (auto it = settings.find(key); it != settings.end() && it->second->getValue()) {
+        if (jasmine::setting::getValue<bool>(key)) {
             sprite->updateDifficultyFrame(difficulty, GJDifficultyName::Short);
         }
     }
