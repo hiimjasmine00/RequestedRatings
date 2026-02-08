@@ -14,14 +14,7 @@
     "dependencies": {
         "geode.node-ids": ">=v1.1.0"
     },
-    "incompatibilities": {
-        "hiimjustin000.na_demon": {
-            "importance": "superseded",
-            "version": ">=v1.0.0"
-        }
-    },
     "settings": {
-        
         "enable-auto": {
             "name": "Enable Auto",
             "description": "Enables the auto difficulty for levels with a requested rating of 1 star.",
