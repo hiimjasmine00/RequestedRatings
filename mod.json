@@ -1,12 +1,12 @@
 {
-    "geode": "5.0.0-alpha.2",
+    "geode": "5.0.0-beta.1",
     "gd": {
         "android": "2.2081",
         "win": "2.2081",
         "mac": "2.2081",
         "ios": "2.2081"
     },
-    "version": "v1.1.7-beta.1",
+    "version": "v1.1.7",
     "id": "hiimjustin000.requested_ratings",
     "name": "Requested Ratings",
     "developer": "hiimjasmine00",
