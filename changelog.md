@@ -1,4 +1,7 @@
 # Requested Ratings Changelog
+## v1.1.8 (2026-11-26)
+- Ported to Geometry Dash v2.209 / Geode SDK v6.0.0
+
 ## v1.1.7 (2026-02-14)
 - Ported to Geometry Dash v2.208 / Geode SDK v5.0.0
 
